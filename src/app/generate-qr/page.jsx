@@ -10,7 +10,20 @@ const GenerateQR = () => {
   const downloadQR = () => {
     const canvas = document.querySelector('canvas');
     if (canvas) {
-      const image = canvas.toDataURL('image/png');
+      // Create a new canvas with padding
+      const paddedCanvas = document.createElement('canvas');
+      const padding = 20; // 4px padding on each side
+      paddedCanvas.width = canvas.width + (padding * 2);
+      paddedCanvas.height = canvas.height + (padding * 2);
+      
+      const ctx = paddedCanvas.getContext('2d');
+      // Fill with white background
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, paddedCanvas.width, paddedCanvas.height);
+      // Draw the original QR code in the center
+      ctx.drawImage(canvas, padding, padding);
+      
+      const image = paddedCanvas.toDataURL('image/png');
       const link = document.createElement('a');
       link.href = image;
       link.download = 'qr-code.png';
