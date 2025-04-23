@@ -221,7 +221,7 @@ const GenerateQR = () => {
                   </label>
                   <input
                     type="range"
-                    min="100"
+                    min="200"
                     max="400"
                     value={qrSize}
                     onChange={(e) => {
@@ -313,7 +313,7 @@ const GenerateQR = () => {
                             <input
                               type="range"
                               min="10"
-                              max="50"
+                              max="35"
                               value={logoScale * 100}
                               onChange={(e) => {
                                 const scale = Number(e.target.value) / 100;
